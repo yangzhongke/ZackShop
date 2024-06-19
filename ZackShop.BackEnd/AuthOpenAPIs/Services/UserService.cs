@@ -32,7 +32,13 @@ public class UserService : IUserService
         {
             throw new UserException("email not found");
         }
-        if()
+        if(!user.ValidatePassword(oldPassword))
+        {
+            return false;
+        }
+        user.ChangePassword(newPassword);
+        await _userRepository.UpdateAsync(user, cancellationToken);
+        return true;
     }
 
     public Task<Guid> CreateUserAsync(string email, string password, CancellationToken cancellationToken)

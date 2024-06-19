@@ -18,4 +18,8 @@
     <ProjectReference Include="..\UsersDomain.Shared\UsersDomain.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
