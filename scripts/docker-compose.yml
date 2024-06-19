@@ -1,0 +1,8 @@
+name: zack_shop
+services:
+  postgres-db1:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: www@ms.com
