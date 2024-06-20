@@ -1,13 +1,7 @@
 ﻿using AuthOpenAPIs.Services;
-using AutoFixture;
 using AutoFixture.Xunit2;
 using FakeItEasy;
 using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing.Shared;
 using UsersDomain.Shared.Entities;
 using UsersDomain.Shared.Repositories;

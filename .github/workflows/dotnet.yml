@@ -20,9 +20,21 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore ./ZackShop.BackEnd
     - name: Build
-      run: dotnet build ./ZackShop.BackEnd --no-restore
+      run: dotnet build ./ZackShop.BackEnd
     - name: Test
-      run: dotnet test ./ZackShop.BackEnd --no-build --verbosity normal
+      run: dotnet test ./ZackShop.BackEnd
+    - name: Install Styker
+      run: dotnet tool install -g dotnet-stryker
+    - name: Styker
+      run: |
+          cd ZackShop.BackEnd
+          cd UsersDomain.Shared.Tests
+          dotnet stryker
+          cd ..
+          cd AuthenOpenAPIs.UnitTest
+          dotnet stryker
+          cd ..
+
+
+          

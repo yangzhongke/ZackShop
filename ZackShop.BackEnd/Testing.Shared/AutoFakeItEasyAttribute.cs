@@ -16,6 +16,7 @@ namespace Testing.Shared
             Fixture fixture = new Fixture();
             fixture.Customize(new AutoFixture.AutoFakeItEasy.AutoFakeItEasyCustomization());
             fixture.Customizations.Add(new CancellationTokenGenerator());
+            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             return fixture;
         }
     }
