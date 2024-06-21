@@ -1,6 +1,6 @@
 {
   "stryker-config": {
-    "project": "AuthenOpenAPIs.csproj",
+    "project": "AuthOpenAPIs.csproj",
     "reporters": [ "cleartexttree" ],
     "thresholds": {
       "high": 80,
