@@ -28,13 +28,9 @@ jobs:
       run: dotnet tool install -g dotnet-stryker
     - name: Stryker
       run: |
-          cd ZackShop.BackEnd
-          cd UsersDomain.Shared.UnitTests
-          dotnet stryker
-          cd ..
-          cd AuthenOpenAPIs.UnitTests
-          dotnet stryker
-          cd ..
+          cd ZackShop.BackEnd          
+          dotnet stryker --config-file=UsersDomain.Shared.UnitTests/stryker-config.json
+          dotnet stryker --config-file=AuthenOpenAPIs.UnitTests/stryker-config.json
 
 
           

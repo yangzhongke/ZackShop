@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UsersDomain", "UsersDomain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthOpenAPIs", "AuthOpenAPIs\AuthOpenAPIs.csproj", "{E733B394-D3BC-4795-934A-5D8DF396F768}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenOpenAPIs.UnitTests", "AuthenOpenAPIs.UnitTests\AuthenOpenAPIs.UnitTests.csproj", "{0FF02E73-A9D1-4B55-8260-0DAC8D4D5601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthOpenAPIs.UnitTests", "AuthOpenAPIs.UnitTests\AuthOpenAPIs.UnitTests.csproj", "{0FF02E73-A9D1-4B55-8260-0DAC8D4D5601}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersDomain.Shared", "UsersDomain.Shared\UsersDomain.Shared.csproj", "{B5E11384-CC08-4A21-90EC-A8BD0C41604B}"
 EndProject
