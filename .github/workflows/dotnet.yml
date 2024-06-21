@@ -30,7 +30,7 @@ jobs:
       run: |
           cd ZackShop.BackEnd          
           dotnet stryker --config-file=UsersDomain.Shared.UnitTests/stryker-config.json
-          dotnet stryker --config-file=AuthenOpenAPIs.UnitTests/stryker-config.json
+          dotnet stryker --config-file=AuthOpenAPIs.UnitTests/stryker-config.json
 
 
           
