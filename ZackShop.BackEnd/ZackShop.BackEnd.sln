@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UsersDomain", "UsersDomain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthOpenAPIs", "AuthOpenAPIs\AuthOpenAPIs.csproj", "{E733B394-D3BC-4795-934A-5D8DF396F768}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenOpenAPIs.UnitTest", "AuthenOpenAPIs.UnitTest\AuthenOpenAPIs.UnitTest.csproj", "{0FF02E73-A9D1-4B55-8260-0DAC8D4D5601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenOpenAPIs.UnitTests", "AuthenOpenAPIs.UnitTests\AuthenOpenAPIs.UnitTests.csproj", "{0FF02E73-A9D1-4B55-8260-0DAC8D4D5601}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersDomain.Shared", "UsersDomain.Shared\UsersDomain.Shared.csproj", "{B5E11384-CC08-4A21-90EC-A8BD0C41604B}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackEnd.Shared", "BackEnd.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersDomain.Shared.UnitTests", "UsersDomain.Shared.UnitTests\UsersDomain.Shared.UnitTests.csproj", "{8A0D1E36-D440-4646-9700-20FDDD227BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Shared", "Testing.Shared\Testing.Shared.csproj", "{27FEDE67-DAD9-4156-820E-07B84A2D21BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Shared", "Testing.Shared\Testing.Shared.csproj", "{27FEDE67-DAD9-4156-820E-07B84A2D21BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
