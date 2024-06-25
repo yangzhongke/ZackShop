@@ -4,13 +4,8 @@ namespace UsersDomain.Shared.Entities;
 public class User
 {
     public Guid Id { get; init; }
-    public string? NickName { get; set; }
     public string Email { get; set; }
     public string PasswordHash { get;private set; }
-    public int LoginAttempts { get; private set; }
-
-    public DateTimeOffset? LockUntil { get; private set; }
-
 
     private User()
     {

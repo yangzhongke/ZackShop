@@ -7,14 +7,9 @@ namespace AuthOpenAPIs.Services;
 
 public interface IUserService: IService
 {
-    Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken);
-    Task<bool> ValidateUserCredentialsAsync(string email, string password, CancellationToken cancellationToken);
+    Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken);
     Task<Guid> CreateUserAsync(string email, string password, CancellationToken cancellationToken);
     Task<bool> ChangePasswordAsync(string email, string oldPassword, string newPassword, CancellationToken cancellationToken);
-    Task<bool> LockUserAsync(string email, CancellationToken cancellationToken);
-    Task<bool> UnlockUserAsync(string email, CancellationToken cancellationToken);
-    Task<bool> ResetPasswordAsync(string email, string newPassword, CancellationToken cancellationToken);
-    Task IncreaseLoginAttemptsAsync(string email, CancellationToken cancellationToken);
 }
 public class UserService : IUserService
 {
@@ -41,38 +36,20 @@ public class UserService : IUserService
         return true;
     }
 
-    public Task<Guid> CreateUserAsync(string email, string password, CancellationToken cancellationToken)
+    public async Task<Guid> CreateUserAsync(string email, string password, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
+        if (user != null)
+        {
+            throw new UserException("email already exists");
+        }
+        User newUser = new User(email, password);
+        await _userRepository.InsertAsync(newUser, cancellationToken);
+        return newUser.Id;
     }
 
-    public Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken)
+    public Task<User?> GetUserByEmailAsync(string email, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task IncreaseLoginAttemptsAsync(string email, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> LockUserAsync(string email, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> ResetPasswordAsync(string email, string newPassword, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> UnlockUserAsync(string email, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> ValidateUserCredentialsAsync(string email, string password, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
+        return _userRepository.GetByEmailAsync(email, cancellationToken);
     }
 }
