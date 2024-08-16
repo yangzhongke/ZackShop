@@ -9,6 +9,7 @@ namespace UsersDomain.Shared.Repositories
         Task<Guid> InsertAsync(User user, CancellationToken cancellationToken);
         Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
         Task UpdateAsync(User user, CancellationToken cancellationToken);
+        Task<User[]> GetAllUsersAsync(CancellationToken cancellationToken);
     }
     public class UserRepository : IUserRepository
     {
@@ -35,6 +36,11 @@ namespace UsersDomain.Shared.Repositories
         {
             _context.Users.Update(user);
             return _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public Task<User[]> GetAllUsersAsync(CancellationToken cancellationToken)
+        {
+            return _context.Users.ToArrayAsync(cancellationToken);
         }
     }
 }

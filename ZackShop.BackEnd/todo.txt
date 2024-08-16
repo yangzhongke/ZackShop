@@ -9,6 +9,8 @@ Message Driven;
 Swagger+generate Typescript
 FrontEnd: Playwright(testid, pipeline)
 
+ISmsClient: UnitTest and WireMock
+
 1. 录制中英文版.net敏捷开发的课程。基于接口的非静态helper类比静态helper对于使用者类来讲更适合单元测试，因为使用者类可以mock helper。单元测试只测试本类，不测试helper
 Why practising DRY in tests is bad for you: https://dev.to/mbarzeev/why-practicing-dry-in-tests-is-bad-for-you-j7f
 2. XUnit: The [Fact] attribut: a test method that takes no method arguments.

@@ -1,5 +1,7 @@
 using UsersDomain.Shared;
 using BackEnd.Shared;
+using RestClients.Shared.ZackCRM;
+using AuthOpenAPIs.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.RegisterAllServices(typeof(UsersDbContext).Assembly);
+
+builder.Services.AddHttpClient<IZackCRMClient, ZackCRMClient>((sp, httpClient) => {
+    var config = sp.GetRequiredService<ZackCRMSettings>();
+    httpClient.BaseAddress = new Uri(config.BaseUrl);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

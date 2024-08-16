@@ -7,6 +7,8 @@ public class User
     public string Email { get; set; }
     public string PasswordHash { get;private set; }
 
+    public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.UtcNow;
+
     private User()
     {
     }

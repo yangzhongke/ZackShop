@@ -17,6 +17,11 @@ namespace AuthOpenAPIs.Controllers
             _logger = logger;
         }
 
+        public async Task<IActionResult> SyncWithZackCrm(CancellationToken cancellationToken)
+        {
+            await _userService.SyncWithZackCrmAsync(cancellationToken);
+            return Ok();
+        }
         /*
 
         [HttpPost("login")]
