@@ -16,6 +16,7 @@ namespace RestClients.Shared.ZackCRM
 
     public class ZackCRMClient : IZackCRMClient
     {
+        //todo: change to IHttpClientFactory 
         private readonly HttpClient _httpClient;
 
         public ZackCRMClient(HttpClient httpClient)

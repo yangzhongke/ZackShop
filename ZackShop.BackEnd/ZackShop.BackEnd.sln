@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Shared", "Testing.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestClients.Shared", "RestClients.Shared\RestClients.Shared.csproj", "{AE02FB8E-CB91-4DB5-B065-D80B0E841F1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthOpenAPIs.IntegrationTests", "AuthOpenAPIs.IntegrationTests\AuthOpenAPIs.IntegrationTests.csproj", "{B1AF76C7-7443-4271-8457-9A1D3D20AB7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{AE02FB8E-CB91-4DB5-B065-D80B0E841F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE02FB8E-CB91-4DB5-B065-D80B0E841F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE02FB8E-CB91-4DB5-B065-D80B0E841F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AF76C7-7443-4271-8457-9A1D3D20AB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AF76C7-7443-4271-8457-9A1D3D20AB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AF76C7-7443-4271-8457-9A1D3D20AB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AF76C7-7443-4271-8457-9A1D3D20AB7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{8A0D1E36-D440-4646-9700-20FDDD227BC6} = {71458A58-2714-4B8F-B3C4-B879491A2781}
 		{27FEDE67-DAD9-4156-820E-07B84A2D21BA} = {17E18929-36FE-4C79-A548-6C65A2889E37}
 		{AE02FB8E-CB91-4DB5-B065-D80B0E841F1B} = {17E18929-36FE-4C79-A548-6C65A2889E37}
+		{B1AF76C7-7443-4271-8457-9A1D3D20AB7F} = {71458A58-2714-4B8F-B3C4-B879491A2781}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1808AB2F-F202-43C0-A7EC-916E67002416}

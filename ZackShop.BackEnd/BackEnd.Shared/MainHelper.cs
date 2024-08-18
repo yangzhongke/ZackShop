@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 
 namespace BackEnd.Shared;
@@ -18,6 +19,7 @@ public static class MainHelper
     {
         using var serviceProvider = new ServiceCollection()
             .AddDb<TDbContext>(configuration)
+            .AddLogging(configure => configure.AddConsole())
             .BuildServiceProvider();
         var dbContext = serviceProvider.GetRequiredService<TDbContext>();
         dbContext.Database.Migrate();//This method is an extension method, defined in the the NuGet package Microsoft.EntityFrameworkCore.Relational.
