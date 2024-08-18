@@ -1,5 +1,7 @@
-﻿namespace UsersDomain.Shared.Helpers;
-public interface ITimeSpanHelper
+﻿using BackEnd.Shared;
+
+namespace UsersDomain.Shared.Helpers;
+public interface ITimeSpanHelper:IService
 {
     public int GetMonthsWithUs(DateTimeOffset dateTimeOffset);
 }
