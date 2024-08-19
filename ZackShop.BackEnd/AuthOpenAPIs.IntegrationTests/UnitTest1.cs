@@ -1,4 +1,10 @@
+using AuthOpenAPIs.Settings;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
+using WireMock.Server;
 using Xunit.Abstractions;
 
 namespace AuthOpenAPIs.IntegrationTests
@@ -23,8 +29,18 @@ namespace AuthOpenAPIs.IntegrationTests
         [Fact]
         public async Task Test1()
         {
+            using var mockServerCrm = WireMockServer.Start();
+            mockServerCrm.Given(Request.Create().WithPath("/api/users").UsingPost())
+                .RespondWith(Response.Create().WithStatusCode(200));
+            mockServerCrm.Given(Request.Create().WithPath("/api/users").UsingGet())
+                .RespondWith(Response.Create().WithStatusCode(200).WithBodyAsJson(new string[] { 
+                Guid.NewGuid()+"@test.com", Guid.NewGuid()+"@test.com"
+                }));
+            //arrange test data
+            var zackCRMSettings = _webApplicationFactory.Services.GetRequiredService<IOptions<ZackCRMSettings>>();
+            zackCRMSettings.Value.BaseUrl = mockServerCrm.Urls[0];
             var client = _webApplicationFactory.CreateClient();
-            var s = await client.GetStringAsync("/api/User/SyncWithZackCrm");
+            var s = await client.PostAsync("/api/User/SyncWithZackCrm",null);
             Assert.NotNull(s);
         }
     }

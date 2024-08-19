@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuthOpenAPIs\AuthOpenAPIs.csproj" />
+    <ProjectReference Include="..\Testing.Shared\Testing.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
