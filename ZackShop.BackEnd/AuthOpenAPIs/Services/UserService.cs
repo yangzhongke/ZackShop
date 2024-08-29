@@ -1,5 +1,4 @@
 ﻿using BackEnd.Shared;
-using Microsoft.AspNetCore.Mvc;
 using RestClients.Shared.ZackCRM;
 using UsersDomain.Shared.Entities;
 using UsersDomain.Shared.Exceptions;

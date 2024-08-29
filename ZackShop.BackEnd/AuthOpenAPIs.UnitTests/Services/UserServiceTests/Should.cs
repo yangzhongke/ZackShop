@@ -2,6 +2,7 @@
 using AutoFixture.Xunit2;
 using FakeItEasy;
 using FluentAssertions;
+using RestClients.Shared.ZackCRM;
 using Testing.Shared;
 using UsersDomain.Shared.Entities;
 using UsersDomain.Shared.Repositories;
@@ -73,6 +74,32 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             user.Should().Be(null);
         }
 
-        //todo: ExportUsersAsync
+        [Theory]
+        [AutoFakeItEasy]
+        public async Task SyncWithZackCrmAsync_Successfully(
+            [Frozen] IUserRepository userRepository,
+            [Frozen] IZackCRMClient zackCRMClient,
+            UserService sut,
+            CancellationToken cancellationToken)
+        {
+            string emailInCRMOnly = "emailInCRMOnly@test.com";
+            string emailInDBOnly = "emailInDBOnly@test.com";
+            string emailInDBAndCRM = "inBoth@test.com";
+
+            A.CallTo(() => zackCRMClient.GetAllUserEmailsAsync(cancellationToken))
+                .Returns([emailInCRMOnly , emailInDBAndCRM]);
+            A.CallTo(() => userRepository.GetAllUsersAsync(cancellationToken))
+                .Returns([new User(emailInDBOnly,"123"), new User(emailInDBAndCRM,"123")]);
+            await sut.SyncWithZackCrmAsync(cancellationToken);
+
+            A.CallTo(() => userRepository.InsertAsync(A<User>.That.Matches(u => u.Email == emailInCRMOnly), cancellationToken))
+                .MustHaveHappenedOnceExactly();
+            A.CallTo(() => zackCRMClient.AddUserAsync(emailInDBOnly, cancellationToken))
+                .MustHaveHappenedOnceExactly();
+            A.CallTo(() => userRepository.InsertAsync(A<User>.That.Matches(u => u.Email == emailInDBAndCRM), cancellationToken))
+                .MustNotHaveHappened();
+            A.CallTo(() => zackCRMClient.AddUserAsync(emailInDBAndCRM, cancellationToken))
+                .MustNotHaveHappened();
+        }
     }
 }
