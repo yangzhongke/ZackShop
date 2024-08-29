@@ -7,6 +7,6 @@
       "low": 60,
       "break": 50
     },
-    "mutate": [ "!Program.cs", "!**/*DbContext.cs", "!**/Repositories/*.cs", "!**/EntityConfigs/*.cs", "!*Exception.cs" ]
+    "mutate": [ "!Program.cs", "!**/*DbContext.cs", "!**/Repositories/*.cs", "!**/Migrations/*.cs", "!**/EntityConfigs/*.cs", "!*Exception.cs" ]
   }
 }
