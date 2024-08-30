@@ -27,8 +27,6 @@ public class SyncWithZackCrmShould : IClassFixture<WebApplicationFactory<Program
         //_webApplicationFactory.Services.GetRequiredService<UsersDbContext>() cannot be used here with creation of scope.
         var scope = _webApplicationFactory.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<UsersDbContext>();
-        dbContext.Database.EnsureCreated();
-        dbContext.Database.Migrate();
         this._dataBaseHelper = new DataBaseHelper(dbContext);
     }
 
