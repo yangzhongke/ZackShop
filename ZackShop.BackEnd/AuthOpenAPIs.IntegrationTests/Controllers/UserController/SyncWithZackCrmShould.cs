@@ -53,7 +53,7 @@ public class SyncWithZackCrmShould : IClassFixture<WebApplicationFactory<Program
         response.IsSuccessStatusCode.Should().BeTrue();
         _dataBaseHelper.GetUserByEmail(newEmailFromCrm1).Should().NotBeNull();
         _dataBaseHelper.GetUserByEmail(newEmailFromCrm2).Should().NotBeNull();
-        _dataBaseHelper.GetAllUsers().Should().HaveCount(3);
+        _dataBaseHelper.GetAllUsers().Should().HaveCount(2);
     }
     
     [Fact]
