@@ -31,6 +31,8 @@ jobs:
       id: postgres
     - name: Build
       run: dotnet build ./ZackShop.BackEnd
+    - name: Set up DB
+      run: dotnet run ./ZackShop.BackEnd/UsersDomain.Shared
     - name: Test
       run: dotnet test ./ZackShop.BackEnd
     - name: Install Styker
