@@ -19,11 +19,15 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             string email, string oldPassword, 
             CancellationToken cancellationToken)
         {
+            //Arrange
             string newPassword = oldPassword + "_new";
             User user =new User(email, oldPassword);
             A.CallTo(() => userRepository.GetByEmailAsync(email, cancellationToken))
                 .Returns(user);
+            //Act
             bool ret = await sut.ChangePasswordAsync(email, oldPassword, newPassword, cancellationToken);
+
+            //Assert
             ret.Should().BeTrue();
             A.CallTo(() => userRepository.UpdateAsync(user, cancellationToken))
                 .MustHaveHappenedOnceExactly();
@@ -37,9 +41,12 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             string email, string password,
             CancellationToken cancellationToken)
         {
+            //Arrange
             A.CallTo(() => userRepository.GetByEmailAsync(email, cancellationToken))
                 .Returns((User?)null);
+            //Act
             Guid userId = await sut.CreateUserAsync(email, password, cancellationToken);
+            //Assert
             userId.Should().NotBeEmpty();
             A.CallTo(() => userRepository.InsertAsync(A<User>.That.Matches(u=>u.Email==email&&u.ValidatePassword(password)), cancellationToken))
                 .MustHaveHappenedOnceExactly();
@@ -54,9 +61,12 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             string email,
             CancellationToken cancellationToken)
         {
+            //Arrange
             A.CallTo(() => userRepository.GetByEmailAsync(email, cancellationToken))
                 .Returns(existingUser);
+            //Act
             User? user  = await sut.GetUserByEmailAsync(email, cancellationToken);
+            //Assert
             user.Should().Be(existingUser);
         }
 
@@ -68,9 +78,13 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             string email,
             CancellationToken cancellationToken)
         {
+            //Arrange
             A.CallTo(() => userRepository.GetByEmailAsync(email, cancellationToken))
                 .Returns((User?)null);
+            //Act
             User? user = await sut.GetUserByEmailAsync(email, cancellationToken);
+            
+            //Assert
             user.Should().Be(null);
         }
 
@@ -82,6 +96,7 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             UserService sut,
             CancellationToken cancellationToken)
         {
+            //Arrange
             string emailInCRMOnly = "emailInCRMOnly@test.com";
             string emailInDBOnly = "emailInDBOnly@test.com";
             string emailInDBAndCRM = "inBoth@test.com";
@@ -90,8 +105,10 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
                 .Returns([emailInCRMOnly , emailInDBAndCRM]);
             A.CallTo(() => userRepository.GetAllUsersAsync(cancellationToken))
                 .Returns([new User(emailInDBOnly,"123"), new User(emailInDBAndCRM,"123")]);
+            //Act
             await sut.SyncWithZackCrmAsync(cancellationToken);
 
+            //Assert
             A.CallTo(() => userRepository.InsertAsync(A<User>.That.Matches(u => u.Email == emailInCRMOnly), cancellationToken))
                 .MustHaveHappenedOnceExactly();
             A.CallTo(() => zackCRMClient.AddUserAsync(emailInDBOnly, cancellationToken))

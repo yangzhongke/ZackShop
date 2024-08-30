@@ -43,4 +43,6 @@ app.MapControllers();
 
 app.Run();
 
+
+//this following line to make the Program is accessible to IntegrationTests project
 public partial class Program { }

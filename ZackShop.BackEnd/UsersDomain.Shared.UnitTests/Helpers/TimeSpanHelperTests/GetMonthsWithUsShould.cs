@@ -54,7 +54,6 @@ public class GetMonthsWithUsShould
     [Fact]
     public void Return_1_WhenDateTimeOffsetIs1MonthBefore()
     {
-
         // Arrange
         DateTimeOffset dateTimeOffset = new DateTimeOffset(2023, 12, 1, 0, 0, 0, TimeSpan.Zero);
         DateTimeOffset dateTimeNow = new DateTimeOffset(2024, 1, 1, 1, 0, 0, TimeSpan.Zero);
