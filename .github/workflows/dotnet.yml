@@ -23,7 +23,7 @@ jobs:
     - uses: ikalnytskyi/action-setup-postgres@v6
       with:
         username: postgres
-        password: =www@ms.com
+        password: www@ms.com
         database: ZackShop
         port: 34837
         postgres-version: "16"
