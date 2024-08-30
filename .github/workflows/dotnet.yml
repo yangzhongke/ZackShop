@@ -32,7 +32,7 @@ jobs:
     - name: Build
       run: dotnet build ./ZackShop.BackEnd
     - name: Set up DB
-      run: dotnet run ./ZackShop.BackEnd --project UsersDomain.Shared
+      run: dotnet run --project ./ZackShop.BackEnd/UsersDomain.Shared/
     - name: Test
       run: dotnet test ./ZackShop.BackEnd
     - name: Install Styker
