@@ -25,7 +25,7 @@ jobs:
         username: postgres
         password: www@ms.com
         database: ZackShop
-        port: 34837
+        port: 5432
         postgres-version: "16"
         ssl: "on"
       id: postgres
