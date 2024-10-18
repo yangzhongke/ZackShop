@@ -39,7 +39,7 @@ public class UserService : IUserService
         }
         user.ChangePassword(newPassword);
         await _userRepository.UpdateAsync(user, cancellationToken);
-        return true;
+        return false;
     }
 
     public async Task<Guid> CreateUserAsync(string email, string password, CancellationToken cancellationToken)
