@@ -65,6 +65,7 @@ public class UserService : IUserService
         foreach(var user in users)
         {
             int monthsWithUs = _timeSpanHelper.GetMonthsWithUs(user.CreatedAt);
+            //todo:
         }
     }
 

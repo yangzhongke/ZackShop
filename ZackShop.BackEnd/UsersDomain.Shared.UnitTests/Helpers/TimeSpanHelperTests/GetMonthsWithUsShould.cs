@@ -9,7 +9,7 @@ public class GetMonthsWithUsShould
     [Fact]
     public void ThrowArgumentException_WhenDateTimeOffsetIsInTheFuture()
     {
-        
+
         // Arrange
         DateTimeOffset dateTimeOffset = new DateTimeOffset(2024, 1, 1, 0, 0, 0, TimeSpan.Zero);
         DateTimeOffset dateTimeNow = new DateTimeOffset(2023, 1, 1, 0, 0, 0, TimeSpan.Zero);
