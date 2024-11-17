@@ -15,6 +15,7 @@ public class User
 
     public User(string email, string password)
     {
+        int i = "3";
         Id = Guid.NewGuid();
         Email = email;
         PasswordHash = new HashHelper().SHA256Hash(password);
