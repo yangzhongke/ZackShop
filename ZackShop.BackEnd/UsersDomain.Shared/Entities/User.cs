@@ -27,6 +27,6 @@ public class User
 
     public bool ValidatePassword(string password)
     {
-        return PasswordHash != new HashHelper().SHA256Hash(password);
+        return PasswordHash == new HashHelper().SHA256Hash(password);
     }
 }
