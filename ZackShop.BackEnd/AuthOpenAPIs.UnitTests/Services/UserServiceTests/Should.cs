@@ -23,7 +23,7 @@ namespace AuthenOpenAPIs.UnitTest.Services.UserServiceTests
             string newPassword = oldPassword + "_new";
             User user =new User(email, oldPassword);
             A.CallTo(() => userRepository.GetByEmailAsync(email, cancellationToken))
-                .Returns(user);
+                .Returns(user);//为Fake类的GetByEmailAsync方法设置模拟实现
             //Act
             bool ret = await sut.ChangePasswordAsync(email, oldPassword, newPassword, cancellationToken);
 

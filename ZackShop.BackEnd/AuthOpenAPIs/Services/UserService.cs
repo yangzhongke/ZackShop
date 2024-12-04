@@ -65,6 +65,7 @@ public class UserService : IUserService
         foreach(var user in users)
         {
             int monthsWithUs = _timeSpanHelper.GetMonthsWithUs(user.CreatedAt);
+            //todo:
         }
     }
 
@@ -82,5 +83,6 @@ public class UserService : IUserService
         {
             await _userRepository.InsertAsync(new User(email, "123456"), cancellationToken);
         }
+        //E2E test: Playwright
     }
 }

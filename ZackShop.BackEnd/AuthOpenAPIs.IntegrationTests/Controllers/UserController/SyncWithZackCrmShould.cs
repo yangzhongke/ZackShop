@@ -45,7 +45,7 @@ public class SyncWithZackCrmShould : IClassFixture<WebApplicationFactory<Program
             }));
         //arrange test data
         var zackCRMSettings = _webApplicationFactory.Services.GetRequiredService<IOptions<ZackCRMSettings>>();
-        zackCRMSettings.Value.BaseUrl = mockServerCrm.Urls[0];
+        zackCRMSettings.Value.BaseUrl = mockServerCrm.Urls[0];//!!!
         var client = _webApplicationFactory.CreateClient();
         //act
         var response = await client.PostAsync("/api/User/SyncWithZackCrm", null);
