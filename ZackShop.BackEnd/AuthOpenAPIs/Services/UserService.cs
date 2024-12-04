@@ -83,5 +83,6 @@ public class UserService : IUserService
         {
             await _userRepository.InsertAsync(new User(email, "123456"), cancellationToken);
         }
+        //E2E test: Playwright
     }
 }
